@@ -1,0 +1,12 @@
+.container
+  .row
+    .col-md-6
+      img src=product.image_url alt=product.name class='img-fluid'
+    .col-md-6
+      h1 = product.name
+      h2.text-muted $= product.price
+      p = product.description
+
+      = form_with model: [current_cart, LineItem.new(product: product)], remote: true do |f|
+        = f.number_field :quantity, value: 1, min: 1, class: 'form-control mb-2'
+        = f.submit 'Add to Cart', class: 'btn btn-primary'

@@ -1,0 +1,9 @@
+.container
+  .row
+    = form_with url: products_path, method: :get, local: true do |form|
+      .col-12.col-md-4.mb-3
+        = form.text_field :search, class: 'form-control', placeholder: 'Search products...'
+    .row
+      - @products.each do |product|
+        .col-12.col-sm-6.col-md-4.mb-4
+          = render 'product_card', product: product
